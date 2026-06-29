@@ -35,8 +35,7 @@ private final VoteService voteService;
     @PostMapping("/votar")
     @ResponseStatus(HttpStatus.CREATED)
     public Vote saveVote(@RequestBody VoteDto voteDto) {
-        Vote vote = voteService.saveVote(VoteMapper.toVote(voteDto));
-        return vote;
+        return voteService.saveVote(VoteMapper.toVote(voteDto));
     }
 
 }

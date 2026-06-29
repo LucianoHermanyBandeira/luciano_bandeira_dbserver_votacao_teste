@@ -7,7 +7,7 @@ CREATE  TABLE IF NOT EXISTS user_associated (
 CREATE TABLE IF NOT EXISTS polls (
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     theme VARCHAR(255) NOT NULL,
-    time_length BIGINT NOT NULL,
+    time_length BIGINT,
     start_time TIMESTAMP,
     end_time TIMESTAMP
 );

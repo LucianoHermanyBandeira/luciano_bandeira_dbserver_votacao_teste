@@ -1,6 +1,5 @@
 package br.com.dbserver.votacao.desafiovotacao.entity;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;

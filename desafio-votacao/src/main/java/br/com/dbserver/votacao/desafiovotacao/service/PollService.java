@@ -49,16 +49,21 @@ public class PollService {
         return new PollResultsDto(getpollById(pollId).getTheme(), voteResults);
     }
 
-    public void openPoll(Long pollId) {
+    public Poll openPoll(Long pollId, Integer timeLengthInMinutes) {
 
         Poll poll = getpollById(pollId);
-
         LocalDateTime now = LocalDateTime.now();
-
         poll.setStartTime(now);
-        poll.setEndTime(now.plusMinutes(poll.getTimeLengthInMinutes())); // Set the end time to 1 minute after the start time
 
-        this.pollRepository.save(poll);
+        if (timeLengthInMinutes != null) {
+            poll.setTimeLengthInMinutes(timeLengthInMinutes);
+        } else {
+            poll.setTimeLengthInMinutes(1); // Default to 1 minute if no time is provided
+        }
+
+        poll.setEndTime(now.plusMinutes(poll.getTimeLengthInMinutes())); 
+
+        return this.pollRepository.save(poll);
     }
 
 }
