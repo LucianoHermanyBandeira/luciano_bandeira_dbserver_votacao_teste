@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  # 1. Servidor Tomcat com sua API (Arquivo .war)
+  tomcat:
+    image: tomcat:9.0-jdk11-corretto # Altere a tag conforme a versão do Java/Tomcat
+    container_name: dbServer-votacao-tomcat
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./desafio-votacao-0.0.1-SNAPSHOT.jar:/usr/local/tomcat/webapps/sua-api.war # Substitua pelo caminho do seu arquivo .war
+      # C:\Users\Luciano HB\Documents\WORK\search for new job 2026\dbserver\votacao\desafio-votacao\target
+    environment:
+      - JAVA_OPTS=-Dspring.profiles.active=prod # Exemplo de variável de ambiente
+    networks:
+      - rede-api
+
+  # 2. Swagger UI para documentação
+  swagger-ui:
+    image: swaggerapi/swagger-ui:latest
+    container_name: meu-swagger-ui
+    ports:
+      - "8081:8080"
+    environment:
+      - SWAGGER_JSON=/usr/share/nginx/html/swagger.json # Ou aponte para a URL da sua API
+    volumes:
+      - ./swagger.json:/usr/share/nginx/html/swagger.json # Monte o seu arquivo JSON/YAML aqui
+    depends_on:
+      - tomcat
+    networks:
+      - rede-api
+
+networks:
+  rede-api:
+    driver: bridge

@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  api-tomcat:
+    image: tomcat:latest
+    container_name: minha_api_tomcat
+    ports:
+      - "8080:8080"
+    volumes:
+      # Mapeia o seu .war local para a pasta webapps do container
+      # Certifique-se de colocar o caminho correto para o seu arquivo .war
+      - ../target/desafio-votacao-0.0.1-SNAPSHOT.war:/usr/local/tomcat/webapps/desafio-votacao-0.0.1-SNAPSHOT.war
+    environment:
+      - JAVA_OPTS=-Xmx512m
+    networks:
+      - rede-api
+
+networks: 
+  rede-api:
+    driver: bridge
