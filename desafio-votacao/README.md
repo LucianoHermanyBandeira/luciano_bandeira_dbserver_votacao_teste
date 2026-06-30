@@ -11,6 +11,8 @@ Esta aplicação Spring Boot implementa um sistema simples de votação com os s
 - Cadastro de associados
 - Registro de votos por associado e por pauta
 - Consulta de resultados de votação por pauta
+- Desconsidere os seguintes .yml files (não estão funcionando ainda): api-votacao-docker-compose.yml, dockerfile, myApi2-docker-compose.yml, myApi-docker-compose.yml
+- Utilizar o arquivo "mysql-docker-compose.yml" e rodar o seguinte comando para subir a base de dados MySql: docker-compose -f mysql-docker-compose.yml up -d
 
 ## Tecnologias
 
@@ -19,7 +21,7 @@ Esta aplicação Spring Boot implementa um sistema simples de votação com os s
 - Spring Data JPA
 - Spring Web MVC
 - MySQL (configuração padrão)
-- H2 (dependência disponível para testes/console)
+- Docker e docker-compose
 
 ## Estrutura de pacotes
 
