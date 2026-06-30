@@ -7,7 +7,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import io.swagger.v3.oas.annotations.Hidden;
+
 @RestControllerAdvice
+@Hidden // Hides the advice from Swagger documentation generation
 public class PollExceptionHandler {
 
     @ExceptionHandler(Exception.class)
