@@ -65,6 +65,7 @@ mvnw.cmd spring-boot:run
 ## Endpoints
 
 Base URL padrão: `http://localhost:8080`
+
 É possível a utilização do SWAGGER para acesso as API's e documentação:http://localhost:8080/swagger-ui/index.html
 
 ### Pautas
